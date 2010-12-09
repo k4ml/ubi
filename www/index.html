@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" 
+    "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Template</title>
+    <script src="js/form2js/src/form2object.js"></script>
+    <script src="js/json2.js"></script>
+</head>
+<body>
+    <form name="order-item" id="frm-order-item" action="#">
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Qty</th>
+            <th>Price/Unit</th>
+            <th>Total</th>
+        </tr>
+        <tr>
+            <td>##</td>
+            <td>
+                <input type="text" name="item.340.name" value="" />
+            </td>
+            <td>
+                <input type="text" name="item.340.qty" value="" />
+            </td>
+            <td>
+                <input type="text" name="item.340.price" value="" />
+            </td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>##</td>
+            <td>
+                <input type="text" name="item.433.name" value="" />
+            </td>
+            <td>
+                <input type="text" name="item.433.qty" value="" />
+            </td>
+            <td>
+                <input type="text" name="item.433.price" value="" />
+            </td>
+            <td>
+
+            </td>
+        </tr>
+    </table>
+    <button type="button" onclick="testForm();">Test</button>
+    </form>
+    <textarea id="logger" rows="30" cols="80">
+
+    </textarea>
+    <script>
+    function testForm() {
+        var order = form2object('frm-order-item');
+        for (var item in order.item) {
+            console.log(order.item[item]);
+        }
+        document.getElementById('logger').innerHTML = JSON.stringify(order, null, '\t');
+        return false;
+    }
+    </script>
+    <!--
+    <script src="http://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+    google.load("jquery", "1.3.1");
+        var page = {
+            init: function() {
+                // constructor code                     },
+                isthisavalidpage: true
+            }
+        };
+        google.setOnLoadCallback(page.init);
+    </script>
+    -->
+</body>
+</html>
