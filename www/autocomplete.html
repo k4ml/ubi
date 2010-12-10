@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" 
+    "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Template</title>
+    <link type="text/css" rel="stylesheet" media="all" href="css/style.css" /> 
+    <script src="js/form2js/src/form2object.js"></script>
+    <script src="js/json2.js"></script>
+</head>
+<body>
+    <input type="text" name="txt-first-name" size="20" value="" onkeyup="auto_lookup(this);" />
+    <div id="lookup-results"></div>
+    <div id="content">
+        <p>Some placeholder text, the results should be overlayed on top of this.</p>
+    </div>
+    <script>
+    var results = [
+        "Kamal Mustafa",
+        "Salim",
+        "Kamil"
+    ];
+    function auto_lookup(input) {
+        var keyword = input.value;
+        var found = [];
+        var div = document.getElementById('lookup-results');
+        var reg = new RegExp(keyword, 'i');
+
+        function clearResults() {
+            if (div.hasChildNodes()) {
+                while (div.childNodes.length >= 1) {
+                    div.removeChild(div.firstChild);
+                }
+            }
+        }
+
+        if (input.value.length <= 2) {
+            clearResults();
+            return false;
+        }
+
+        for (var i = 0; i < results.length; i++) {
+            if (reg.test(results[i])) {
+                found.push(results[i]);
+            }
+        }
+
+        if (found.length > 0) {
+            clearResults();
+            var ul = document.createElement('ul');
+            for (var i = 0; i < found.length; i++) {
+                var li = document.createElement('li');
+                li.appendChild(document.createTextNode(found[i]));
+                ul.appendChild(li);
+            }
+            div.appendChild(ul);
+        }
+    }
+    </script>
+    <!--
+    <script src="http://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+    google.load("jquery", "1.3.1");
+        var page = {
+            init: function() {
+                // constructor code                     },
+                isthisavalidpage: true
+            }
+        };
+        google.setOnLoadCallback(page.init);
+    </script>
+    -->
+</body>
+</html>

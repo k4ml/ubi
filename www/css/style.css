@@ -1,0 +1,6 @@
+#lookup-results {
+    position: absolute;
+    z-index: 1000;
+    background-color: #ccffcc;
+    width: 200px;
+}
